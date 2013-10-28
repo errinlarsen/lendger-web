@@ -1,10 +1,9 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rails', '4.0.0'
-gem 'sqlite3'
-gem 'turbolinks'
+gem "rails", "4.0.0"
+gem "sqlite3"
+gem "turbolinks"
+gem "haml"
 
-group :test do
-  gem "rspec", "~> 2.0"
-  gem "capybara"
-end
+gem "rspec-rails", group: [:development, :test]
+gem "capybara",    group: [:test]
