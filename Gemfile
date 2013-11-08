@@ -5,5 +5,7 @@ gem "sqlite3"
 gem "turbolinks"
 gem "haml"
 
+gem "virtus"
+
 gem "rspec-rails", group: [:development, :test]
 gem "capybara",    group: [:test]
