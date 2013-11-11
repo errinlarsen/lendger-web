@@ -1,7 +1,6 @@
 require "rspec/autorun"
 
 $LOAD_PATH << File.expand_path("../../../app", __FILE__)
-$LOAD_PATH << File.expand_path("../../../lib", __FILE__)
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
