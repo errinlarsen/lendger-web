@@ -2,23 +2,26 @@ require File.expand_path(File.dirname(__FILE__) + "/unit_helper")
 require "models/thing"
 
 describe Thing do
+  let(:attributes) { {id: 1, name: "foo", description: "bar"} }
+  let(:thing) { Thing.new(attributes) }
+
   describe ".new" do
-    it "creates a new Thing" do
-      expect(Thing.new).to be_a(Thing)
-    end
     it "accepts a Hash of attributes" do
-      expect { Thing.new(name: "foobar") }.not_to raise_error
+      expect { thing }.not_to raise_error
     end
   end
 
-  describe "Attributes" do
-    let(:attributes) { {name: "foobar"} }
-    let(:thing) { Thing.new(attributes) }
-
+  describe "#attributes" do
+    it "includes an id" do
+      expect(thing.attributes).to include(id: 1)
+    end
     it "includes a name" do
-      expect(thing.name).to eql("foobar")
-      thing.name = "Something else"
-      expect(thing.name).to eql("Something else")
+      expect(thing.attributes).to include(name: "foo")
+    end
+    it "includes an (optional) description" do
+      expect(thing.attributes).to include(description: "bar")
+      expect { @other_thing = Thing.new(id: 1, name: "foo") }.to_not raise_error
+      expect(@other_thing.description).to be_nil
     end
   end
 end
