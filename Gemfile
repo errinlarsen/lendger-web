@@ -2,10 +2,17 @@ source "https://rubygems.org"
 
 gem "rails", "4.0.0"
 gem "sqlite3"
-gem "turbolinks"
+# gem "turbolinks"  # Need?
 gem "haml"
 
 gem "virtus"
 
-gem "rspec-rails", group: [:development, :test]
-gem "capybara",    group: [:test]
+# Why?
+# group :development do
+#   gem "rspec-rails"
+# end
+
+group :test do
+  gem "capybara"
+  gem "rspec-rails"
+end
