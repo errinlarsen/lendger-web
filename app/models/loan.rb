@@ -1,5 +1,6 @@
 require "virtus"
-require "models/person"
+require_relative "thing"
+require_relative "person"
 
 class Loan
   include Virtus.model
@@ -7,4 +8,5 @@ class Loan
   attribute :id, Integer
   attribute :lender, Person
   attribute :borrower, Person
+  attribute :thing, Thing
 end

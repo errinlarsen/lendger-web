@@ -20,6 +20,9 @@ describe Loan do
     it "includes a lender" do
       expect(loan.attributes).to include(:lender)
     end
+    it "includes a thing" do
+      expect(loan.attributes).to include(:thing)
+    end
     it "includes a borrower" do
       expect(loan.attributes).to include(:borrower)
     end
