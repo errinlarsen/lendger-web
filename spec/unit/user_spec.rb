@@ -18,8 +18,8 @@ describe User do
     it "includes a login" do
       expect(user.attributes).to include(login: "foo")
     end
-    it "includes an email" do
-      expect(user.attributes).to include(email: "foo@bar.com")
+    it "includes a person" do
+      expect(user.attributes).to include(:person)
     end
   end
 end
