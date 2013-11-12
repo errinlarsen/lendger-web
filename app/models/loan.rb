@@ -3,10 +3,10 @@ require_relative "thing"
 require_relative "person"
 
 class Loan
-  include Virtus.model
+  include Virtus.model(finalize: false)
 
   attribute :id, Integer
-  attribute :lender, Person
-  attribute :borrower, Person
-  attribute :thing, Thing
+  attribute :thing, "Thing"
+  attribute :lender, "Person"
+  attribute :borrower, "Person"
 end

@@ -16,4 +16,8 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   config.order = "random"
+
+  # Finalize constants manually to resolve circular dependencies in Virtus
+  # TODO: this feels hack-y/sloppy
+  config.before(:suite) { Virtus.finalize }
 end
