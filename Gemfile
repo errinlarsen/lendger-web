@@ -6,6 +6,7 @@ gem "sqlite3"
 gem "haml"
 
 gem "virtus"
+gem "hashie"
 
 # Why?
 # group :development do

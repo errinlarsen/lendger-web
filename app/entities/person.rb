@@ -1,10 +1,9 @@
-require "virtus"
+require_relative "entity"
 require_relative "loan"
 
-class Person
+class Person < Entity
   include Virtus.model(finalize: false)
 
-  attribute :id, Integer
   attribute :name, String
   attribute :email, String
   attribute :loans, Array["Loan"]

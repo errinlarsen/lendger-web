@@ -1,9 +1,6 @@
-require "virtus"
+require_relative "entity"
 
-class Thing
-  include Virtus.model
-
-  attribute :id, Integer
+class Thing < Entity
   attribute :name, String
   attribute :description, String
 end

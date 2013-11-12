@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/unit_helper")
-require "models/thing"
+require "entities/thing"
 
 describe Thing do
   let(:attributes) { {id: 1, name: "foo", description: "bar"} }

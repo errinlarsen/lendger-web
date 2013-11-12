@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/unit_helper")
-require "models/user"
+require "entities/user"
 
 describe User do
   let(:attributes) { {id: 1, login: "foo", email: "foo@bar.com"} }

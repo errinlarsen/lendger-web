@@ -1,5 +1,5 @@
 require_relative "unit_helper"
-require "models/person"
+require "entities/person"
 
 describe Person do
   let(:attributes) { {id: 1, name: "foobar", email: "foo@bar.com"} }

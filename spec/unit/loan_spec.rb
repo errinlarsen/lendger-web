@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + "/unit_helper")
-require "models/loan"
+require "entities/loan"
 
 describe Loan do
   let(:lender)     { {id: 1, name: "Lender"} }

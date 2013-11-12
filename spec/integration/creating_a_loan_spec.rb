@@ -1,5 +1,5 @@
 require_relative "integration_helper"
-require "models/user"
+require "entities/user"
 
 describe "Creating a new Loan" do
   let(:person)   { Person.new(name: "Foo Bar", email: "foo@bar.com") }

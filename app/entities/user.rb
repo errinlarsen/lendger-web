@@ -1,10 +1,7 @@
-require "virtus"
+require_relative "entity"
 require_relative "person"
 
-class User
-  include Virtus.model
-
-  attribute :id, Integer
+class User < Entity
   attribute :login, String
   attribute :person, Person
 
