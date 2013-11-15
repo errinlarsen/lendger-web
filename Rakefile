@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Lendger::Application.load_tasks
+LendgerWeb::Application.load_tasks
