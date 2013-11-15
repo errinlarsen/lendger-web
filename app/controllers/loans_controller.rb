@@ -1,42 +1,43 @@
+require "lendger/loan_interactors"
+
 class LoansController < ActionController::Base
   respond_to :html
-  before_filter :set_default_request
 
   def index
-    @response = BrowseLoans.new(@request).call
-    respond_with @response
+    interactor = Lendger::BrowseLoans.perform
+    respond_with @loans = interactor.loans
   end
 
-  def show
-    @response = LoadLoan.new(@request).call
-    respond_with @response
+  def show  # and edit
+    interactor = Lendger::LoadLoan.perform(context)
+    respond_with @loan = interactor.loan
   end
   alias_method :edit, :show
 
   def new
-    @response = NewLoan.new(@request).call
-    respond_with @response
+    interactor = Lendger::NewLoan.perform
+    respond_with @loan = interactor.loan
   end
 
-  def create
-    @request.object_aattributes = loan_params
-    @response = SaveLoan.new(@request).call
-    respond_with @response.loan, location: loans_path
+  def create  # and update
+    interactor = Lendger::SaveLoan.perform(context)
+    @loan = interactor.loan
+    respond_with @loan, location: loans_path
   end
   alias_method :update, :create
 
   def destroy
-    @response = DeleteLoan.new(@request).call
-    respond_with @response, location: loans_path
-  end
-
-  protected
-  def set_default_request
-    @request = Request.new(params: params)
+    interactor = Lendger::DeleteLoan.perform(context)
+    @loan = interactor.loan
+    respond_with @loan, location: loans_path
   end
 
   private
+  def context
+    return { params: params, model_attributes: loan_params }
+  end
+
   def loan_params
-    params.require(:loan).permit(:lender, :thing, :borrower)
+    return params.require(:loan).permit(:lender, :thing, :borrower)
   end
 end
