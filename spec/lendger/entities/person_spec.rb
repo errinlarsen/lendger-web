@@ -1,20 +1,14 @@
-require_relative "unit_helper"
-require "entities/person"
+require_relative "../unit_helper"
+require_relative "../entity_examples"
+require "lendger/entities/person"
 
 describe Person do
   let(:attributes) { {id: 1, name: "foobar", email: "foo@bar.com"} }
   let(:person) { Person.new(attributes) }
 
-  describe ".new" do
-    it "accepts a Hash of attributes" do
-      expect { person.attributes }.not_to raise_error
-    end
-  end
+  it_behaves_like "a Lendger::Entity"
 
   describe "#attributes" do
-    it "includes an id" do
-      expect(person.attributes).to include(id: 1)
-    end
     it "includes a name" do
       expect(person.attributes).to include(name: "foobar")
     end

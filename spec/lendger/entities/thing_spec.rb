@@ -1,6 +1,6 @@
-require_relative "../../unit_helper"
-require_relative "entity_examples"
-require "entities/thing"
+require_relative "../unit_helper"
+require_relative "../entity_examples"
+require "lendger/entities/thing"
 
 describe Thing do
   let(:attributes) { {id: 1, name: "foo", description: "bar"} }

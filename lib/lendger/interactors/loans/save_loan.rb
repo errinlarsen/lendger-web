@@ -1,4 +1,4 @@
-class Interactor
+class SaveLoan < Interactor
   attr_reader :request, :response
 
   def initialize(request={})
@@ -6,7 +6,31 @@ class Interactor
     @response = Response.new
   end
 
+  def call
+    loan = Loan.new(request.object_attributes)
+    check_validity_of(loan)
+    return response
+  end
+
   private
+  def check_validity_of(loan)
+    if loan.valid?
+      save_loan
+    else
+      reject_loan
+    end
+  end
+
+  def save_loan
+    repo = save_repository_in(LoanRepository)
+    @response.loan = repo.attributes
+  end
+
+  def reject_loan
+    @response.loan = request.object_attributes
+    @response.loan.errors = loan.errors
+  end
+
   def save_repository_in(repo_class)
     if request.params[:id]
       return update_repository(repo_class)

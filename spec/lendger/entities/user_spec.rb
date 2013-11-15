@@ -1,20 +1,14 @@
-require File.expand_path(File.dirname(__FILE__) + "/unit_helper")
-require "entities/user"
+require_relative "../unit_helper"
+require_relative "../entity_examples"
+require "lendger/entities/user"
 
 describe User do
   let(:attributes) { {id: 1, login: "foo", email: "foo@bar.com"} }
   let(:user) { User.new(attributes) }
 
-  describe ".new" do
-    it "accepts a Hash of attributes" do
-      expect { user }.not_to raise_error
-    end
-  end
+  it_behaves_like "a Lendger::Entity"
 
   describe "#attributes" do
-    it "includes an id" do
-      expect(user.attributes).to include(id: 1)
-    end
     it "includes a login" do
       expect(user.attributes).to include(login: "foo")
     end

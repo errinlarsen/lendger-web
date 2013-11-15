@@ -1,4 +1,4 @@
-require_relative "entity"
+require_relative "../entity"
 require_relative "thing"
 require_relative "person"
 
