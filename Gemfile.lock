@@ -47,10 +47,10 @@ GEM
     erubis (2.7.0)
     haml (4.0.4)
       tilt
-    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.5)
     ice_nine (0.10.0)
+    interactor (2.1.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -121,7 +121,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   haml
-  hashie
+  interactor
   rails (= 4.0.0)
   rspec-rails
   sqlite3
