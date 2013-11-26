@@ -5,21 +5,13 @@ module Lendger
     include ::Interactor
 
     private
-    def save_repository(repo_class)
-      if params[:id].nil?
-        return repo_class.create(model_attributes)
+    def create_or_update(entity)
+      if request[:id].nil?
+        return repository.create(entity.attributes)
       else
-        return update_repository(repo_class)
+        persisted = repository.find(request[:id])
+        return persisted.update_attributes(entity.attributes)
       end
-    end
-
-    def update_repository(repo_class)
-      repository = repo_class.find(params[:id])
-      return repository.update_attributes(model_attributes)
-    end
-
-    def delete_from(repo_class)
-      return repo_class.find(params[:id]).destroy
     end
   end
 end

@@ -7,6 +7,7 @@ gem "haml"
 
 gem "virtus"
 gem "interactor"
+gem "display_case"
 
 # Why?
 # group :development do

@@ -1,0 +1,18 @@
+= form_for :loan do |f|
+  %p
+    = f.label "Who is lending the thing?"
+    = fields_for :lender do |lf|
+      = lf.text_field :name
+
+  %p
+    = f.label "What is being lent?"
+    = fields_for :thing do |tf|
+      = tf.text_field :description
+
+  %p
+    = f.label "Who is borrowing it?"
+    = fields_for :borrower do |bf|
+      = bf.text_field :name
+
+  %p
+    = f.submit

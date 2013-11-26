@@ -1,43 +1,46 @@
 require "lendger/loan_interactors"
 
 class LoansController < ActionController::Base
-  respond_to :html
-
   def index
-    interactor = Lendger::BrowseLoans.perform
-    respond_with @loans = interactor.loans
+    @loans = Lendger::BrowseLoans.perform(context).loans
   end
 
   def show  # and edit
-    interactor = Lendger::LoadLoan.perform(context)
-    respond_with @loan = interactor.loan
+    @loan = Lendger::LoadLoan.perform(context).loan
   end
   alias_method :edit, :show
 
   def new
-    interactor = Lendger::NewLoan.perform
-    respond_with @loan = interactor.loan
+    @loan = Lendger::NewLoan.perform(context).loan
   end
 
   def create  # and update
-    interactor = Lendger::SaveLoan.perform(context)
-    @loan = interactor.loan
-    respond_with @loan, location: loans_path
+    results = Lendger::SaveLoan.perform(context)
+
+    if results.success?
+      flash.notice = "Loan saved successfully."
+      redirect_to results.loan
+    else
+      flash.new.alert = "Loan was not saved"
+      render :new
+    end
   end
   alias_method :update, :create
 
   def destroy
-    interactor = Lendger::DeleteLoan.perform(context)
-    @loan = interactor.loan
-    respond_with @loan, location: loans_path
+    results = Lendger::DeleteLoan.perform(context)
+
+    if results.success?
+      flash.notice = "Loan was deleted successfully."
+    else
+      flash.alert = "loan was not deleted."
+    end
+
+    redirect to loans_path
   end
 
   private
   def context
-    return { params: params, model_attributes: loan_params }
-  end
-
-  def loan_params
-    return params.require(:loan).permit(:lender, :thing, :borrower)
+    return { repository: LoanRepository, presenter: LoanPresenter, request: params }
   end
 end

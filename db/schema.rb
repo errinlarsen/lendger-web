@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20131112212202) do
 
   create_table "loan_repository", force: true do |t|
-    t.integer  "person_repository_id"
+    t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "loan_repository", ["person_repository_id"], name: "index_loan_repository_on_person_repository_id"
+  add_index "loan_repository", ["person_id"], name: "index_loan_repository_on_person_id"
 
 end

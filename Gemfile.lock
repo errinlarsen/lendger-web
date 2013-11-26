@@ -43,6 +43,7 @@ GEM
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.3)
     diff-lcs (1.2.5)
+    display_case (0.0.9)
     equalizer (0.0.7)
     erubis (2.7.0)
     haml (4.0.4)
@@ -120,6 +121,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  display_case
   haml
   interactor
   rails (= 4.0.0)
