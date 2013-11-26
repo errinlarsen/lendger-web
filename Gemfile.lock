@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/errinlarsen/lendger-core.git
+  revision: 8ba2133da45aa90faf995e3ebaf6d265be3a21cf
+  specs:
+    lendger-core (0.0.1.alpha1)
+      inflecto
+      interactor
+      virtus
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,7 +52,6 @@ GEM
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.3)
     diff-lcs (1.2.5)
-    display_case (0.0.9)
     equalizer (0.0.7)
     erubis (2.7.0)
     haml (4.0.4)
@@ -51,6 +59,7 @@ GEM
     hike (1.2.3)
     i18n (0.6.5)
     ice_nine (0.10.0)
+    inflecto (0.0.2)
     interactor (2.1.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -121,10 +130,8 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  display_case
   haml
-  interactor
+  lendger-core!
   rails (= 4.0.0)
   rspec-rails
   sqlite3
-  virtus
